@@ -1,7 +1,7 @@
 import 'package:flutter_deliver/views/home/home_view.dart';
 import 'package:sailor/sailor.dart';
 
-import '../../core/base/base_service.dart';
+import 'package:flutter_deliver/core/base/base_service.dart';
 import 'package:flutter/material.dart';
 
 class NavigatorService extends BaseService {
