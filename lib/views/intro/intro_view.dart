@@ -1,26 +1,25 @@
-library home_view;
+library intro_view;
 
-import 'package:flutter_deliver/core/models/ThemeModel.dart';
-import 'package:provider/provider.dart';
+import 'package:introduction_screen/introduction_screen.dart';
 import 'package:provider_architecture/provider_architecture.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:flutter/material.dart';
-import 'home_view_model.dart';
+import 'intro_view_model.dart';
 
-part 'home_mobile.dart';
+part 'intro_mobile.dart';
 
-class HomeView extends StatelessWidget {
+class IntroView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    HomeViewModel viewModel = HomeViewModel();
-    return ViewModelProvider<HomeViewModel>.withConsumer(
+    IntroViewModel viewModel = IntroViewModel();
+    return ViewModelProvider<IntroViewModel>.withConsumer(
       viewModelBuilder: () => viewModel,
       onModelReady: (viewModel) {
         // Do something once your viewModel is initialized
       },
       builder: (context, viewModel, child) {
         return ScreenTypeLayout(
-          mobile: _HomeMobile(viewModel),
+          mobile: _IntroMobile(viewModel),
         );
       }
     );
