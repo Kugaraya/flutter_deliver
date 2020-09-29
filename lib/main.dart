@@ -1,4 +1,5 @@
 import 'package:flutter/services.dart';
+import 'package:flutter_deliver/core/models/ThemeModel.dart';
 import 'package:flutter_deliver/core/services/navigator_service.dart';
 import 'package:flutter_deliver/core/services/auth_service.dart';
 
@@ -11,7 +12,6 @@ void main() async {
   await LocatorInjector.setupLocator();
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
   locator<NavigatorService>().createRoutes();
   locator<AuthService>().initValues();
   runApp(MainApplication());
@@ -29,7 +29,6 @@ class MainApplication extends StatelessWidget with WidgetsBindingObserver {
 
       case AppLifecycleState.resumed:
         SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-        SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
         break;
 
       case AppLifecycleState.detached:
@@ -45,14 +44,22 @@ class MainApplication extends StatelessWidget with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: ProviderInjector.providers,
-      child: MaterialApp(
-        supportedLocales: [
-          Locale('en', ''),
-        ],
-        navigatorKey: locator<NavigatorService>().navigatorKey,
-        onGenerateRoute: locator<NavigatorService>().generator,
-        initialRoute: '/',
-        debugShowCheckedModeBanner: false,
+      child: ChangeNotifierProvider<ThemeModel>(
+        create: (context) => ThemeModel(),
+        child: Consumer<ThemeModel>(
+          builder: (context, model, __) {
+            return MaterialApp(
+              supportedLocales: [
+                Locale('en', ''),
+              ],
+              theme: Provider.of<ThemeModel>(context).currentTheme,
+              navigatorKey: locator<NavigatorService>().navigatorKey,
+              onGenerateRoute: locator<NavigatorService>().generator,
+              initialRoute: '/',
+              debugShowCheckedModeBanner: false,
+            );
+          },
+        ),
       ),
     );
   }

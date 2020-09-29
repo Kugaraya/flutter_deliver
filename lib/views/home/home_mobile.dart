@@ -9,8 +9,14 @@ class _HomeMobile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Mobile'),
-        backgroundColor: Colors.black,
+        title: Text('Theme Switching Test'),
+        backgroundColor: Theme.of(context).primaryColor,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.lightbulb_outline),
+            onPressed: () => Provider.of<ThemeModel>(context, listen: false).toggleTheme(),
+          )
+        ],
       ),
       body: Center(
         child: Column(
@@ -30,7 +36,7 @@ class _HomeMobile extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: viewModel.increment,
-        backgroundColor: Colors.black,
+        backgroundColor: Theme.of(context).accentColor,
       ),
     );
   }

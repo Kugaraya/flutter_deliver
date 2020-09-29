@@ -23,6 +23,8 @@ dependencies:
   dio: ^3.0.10
   timeline_list: ^0.0.5
   liquid_pull_to_refresh: ^2.0.0
+  google_nav_bar: ^3.0.1
+  introduction_screen: ^1.0.9
 
 dev_dependencies:
   flutter_test:

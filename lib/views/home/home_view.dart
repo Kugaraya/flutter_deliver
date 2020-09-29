@@ -1,5 +1,7 @@
 library home_view;
 
+import 'package:flutter_deliver/core/models/ThemeModel.dart';
+import 'package:provider/provider.dart';
 import 'package:provider_architecture/provider_architecture.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:flutter/material.dart';

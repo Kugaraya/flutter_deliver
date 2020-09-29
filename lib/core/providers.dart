@@ -1,3 +1,4 @@
+import 'package:flutter_deliver/core/models/ThemeModel.dart';
 import 'package:provider/single_child_widget.dart';
 
 import '../core/locator.dart';
@@ -9,6 +10,9 @@ class ProviderInjector {
     ..._independentServices,
     ..._dependentServices,
     ..._consumableServices,
+    ChangeNotifierProvider<ThemeModel>(
+      create: (_) => ThemeModel(),
+    ),
   ];
 
   static List<SingleChildWidget> _independentServices = [
