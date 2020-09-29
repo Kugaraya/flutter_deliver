@@ -1,4 +1,5 @@
-import 'package:flutter_deliver/core/models/ThemeModel.dart';
+import 'package:flutter_deliver/core/providers/BottomNavBarModel.dart';
+import 'package:flutter_deliver/core/providers/ThemeModel.dart';
 import 'package:provider/single_child_widget.dart';
 
 import '../core/locator.dart';
@@ -10,9 +11,6 @@ class ProviderInjector {
     ..._independentServices,
     ..._dependentServices,
     ..._consumableServices,
-    ChangeNotifierProvider<ThemeModel>(
-      create: (_) => ThemeModel(),
-    ),
   ];
 
   static List<SingleChildWidget> _independentServices = [
@@ -21,5 +19,12 @@ class ProviderInjector {
 
   static List<SingleChildWidget> _dependentServices = [];
   
-  static List<SingleChildWidget> _consumableServices = [];
+  static List<SingleChildWidget> _consumableServices = [
+    ChangeNotifierProvider<ThemeModel>(
+      create: (_) => ThemeModel(),
+    ),
+    ChangeNotifierProvider<BottomNavigationBarProvider>(
+      create: (_) => BottomNavigationBarProvider(),
+    ),
+  ];
 }

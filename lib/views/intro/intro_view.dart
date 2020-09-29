@@ -4,6 +4,7 @@ import 'package:introduction_screen/introduction_screen.dart';
 import 'package:provider_architecture/provider_architecture.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:flutter/material.dart';
+import 'package:sailor/sailor.dart';
 import 'intro_view_model.dart';
 
 part 'intro_mobile.dart';
