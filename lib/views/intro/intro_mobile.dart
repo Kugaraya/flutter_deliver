@@ -54,7 +54,10 @@ class _IntroMobile extends StatelessWidget {
       body: IntroductionScreen(
         pages: pages,
         onDone: () {
-          // When done button is press
+          viewModel.navigatorService.navigateTo(
+            '/dashboard',
+            navigationType: NavigationType.pushAndRemoveUntil,
+          );
         },
         showSkipButton: true,
         globalBackgroundColor: Color(0xFFe8d2ff),

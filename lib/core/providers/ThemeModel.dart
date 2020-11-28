@@ -5,18 +5,18 @@ enum ThemeType { Light, Dark }
 
 class ThemeModel extends ChangeNotifier {
   ThemeData currentTheme = lightTheme;
-  ThemeType _themeType = ThemeType.Light;
+  ThemeType themeType = ThemeType.Light;
 
   toggleTheme() {
-    if (_themeType == ThemeType.Dark) {
+    if (themeType == ThemeType.Dark) {
       currentTheme = lightTheme;
-      _themeType = ThemeType.Light;
+      themeType = ThemeType.Light;
       return notifyListeners();
     }
 
-    if (_themeType == ThemeType.Light) {
+    if (themeType == ThemeType.Light) {
       currentTheme = darkTheme;
-      _themeType = ThemeType.Dark;
+      themeType = ThemeType.Dark;
       return notifyListeners();
     }
   }

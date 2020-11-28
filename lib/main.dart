@@ -1,5 +1,5 @@
 import 'package:flutter/services.dart';
-import 'package:flutter_deliver/core/models/ThemeModel.dart';
+import 'package:flutter_deliver/core/providers/ThemeModel.dart';
 import 'package:flutter_deliver/core/services/navigator_service.dart';
 import 'package:flutter_deliver/core/services/auth_service.dart';
 
@@ -44,22 +44,19 @@ class MainApplication extends StatelessWidget with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: ProviderInjector.providers,
-      child: ChangeNotifierProvider<ThemeModel>(
-        create: (context) => ThemeModel(),
-        child: Consumer<ThemeModel>(
-          builder: (context, model, __) {
-            return MaterialApp(
-              supportedLocales: [
-                Locale('en', ''),
-              ],
-              theme: Provider.of<ThemeModel>(context).currentTheme,
-              navigatorKey: locator<NavigatorService>().navigatorKey,
-              onGenerateRoute: locator<NavigatorService>().generator,
-              initialRoute: '/',
-              debugShowCheckedModeBanner: false,
-            );
-          },
-        ),
+      child: Consumer<ThemeModel>(
+        builder: (context, model, __) {
+          return MaterialApp(
+            supportedLocales: [
+              Locale('en', ''),
+            ],
+            theme: Provider.of<ThemeModel>(context).currentTheme,
+            navigatorKey: locator<NavigatorService>().navigatorKey,
+            onGenerateRoute: locator<NavigatorService>().generator,
+            initialRoute: '/',
+            debugShowCheckedModeBanner: false,
+          );
+        },
       ),
     );
   }

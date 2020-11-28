@@ -1,3 +1,4 @@
+import 'package:flutter_deliver/views/dashboard/dashboard_view.dart';
 import 'package:flutter_deliver/views/intro/intro_view.dart';
 import 'package:sailor/sailor.dart';
 
@@ -18,6 +19,12 @@ class NavigatorService extends BaseService {
           return IntroView();
         },
       ),
+      SailorRoute(
+        name: "/dashboard",
+        builder: (context, args, params) {
+          return DashboardView();
+        },
+      ),
     ]);
   }
 
@@ -35,7 +42,7 @@ class NavigatorService extends BaseService {
       params: params != null ? params : null,
       transitionDuration: transitionDuration != null ? transitionDuration : Duration(milliseconds: 600),
       navigationType: navigationType != null ? navigationType : NavigationType.push,
-      transitions: transition != null ? transition : [SailorTransition.fade_in, SailorTransition.slide_from_bottom],
+      transitions: transition != null ? transition : [SailorTransition.fade_in, SailorTransition.fade_in],
       transitionCurve: transitionCurve != null ? transitionCurve : Curves.ease,
       removeUntilPredicate: navigationType == NavigationType.pushAndRemoveUntil ? (route) => false : null
     );
